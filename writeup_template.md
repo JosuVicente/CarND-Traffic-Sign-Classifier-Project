@@ -19,9 +19,9 @@ The goals / steps of this project are the following:
 
 [image1]: ./write_up/hist.png "Histogram"
 [image2]: ./write_up/classes.png "Traffic Sign Classes"
-[image3]: ./write_up/random_noise.jpg "Random Noise"
-[image4]: ./write_up/placeholder.png "Traffic Sign 1"
-[image5]: ./write_up/placeholder.png "Traffic Sign 2"
+[image3]: ./write_up/stoppp.png "Traffic Sign Preprocessed"
+[image4]: ./write_up/augment.png "Traffic Sign augmented"
+[image5]: ./write_up/hist2.png "Histogram After Augmentation"
 [image6]: ./write_up/placeholder.png "Traffic Sign 3"
 [image7]: ./write_up/placeholder.png "Traffic Sign 4"
 [image8]: ./write_up/placeholder.png "Traffic Sign 5"
@@ -46,17 +46,20 @@ I used the pandas library to calculate summary statistics of the traffic
 signs data set:
 
 * The size of training set is 34799
+* The size of validation set is 4410
 * The size of test set is 12630
 * The shape of a traffic sign image is (32, 32, 3)
 * The number of unique classes/labels in the data set is 43
 
 ####2. Include an exploratory visualization of the dataset and identify where the code is in your code file.
 
-The code for this step is contained in the third code cell of the IPython notebook.  
+The code for this step is contained in the fourth code cell of the IPython notebook.  
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Firstly I display an histogram to show how many examples of each of the 43 classes we have in our training data
 
 ![alt text][image1]
+
+And then I display a sample image for each of the classes
 
 ![alt text][image2]
 
@@ -64,31 +67,45 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 ####1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.
 
-The code for this step is contained in the fourth code cell of the IPython notebook.
+The code for this step is contained in the sixth code cell of the IPython notebook.
 
-As a first step, I decided to convert the images to grayscale because ...
+After applying this the training set size grows from 34799 examples to 62457
 
-Here is an example of a traffic sign image before and after grayscaling.
+Next I normalize the data and transform all images to grayscale so we then have 1 color dimension instead of 3
 
-![alt text][image2]
+Here is an example of an original image and an the same image after preprocessing:
+![alt text][image3]
 
-As a last step, I normalized the image data because ...
+Finally I shuffle the training set
 
 ####2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)
 
-The code for splitting the data into training and validation sets is contained in the fifth code cell of the IPython notebook.  
+For this project we were provided with training, validation and testing data.
+The code for loading this data into our variables is in first code cell of the IPython notebook.  
 
-To cross validate my model, I randomly split the training data into a training set and validation set. I did this by ...
-
-My final training set had X number of images. My validation set and test set had Y and Z number of images.
+Number of training examples = 34799 (62457 after preprocessing step)
+Number of validation examples = 4410
+Number of testing examples = 12630
 
 The sixth code cell of the IPython notebook contains the code for augmenting the data set. I decided to generate additional data because ... To add more data to the the data set, I used the following techniques because ... 
 
+First I augment the training data by flipping and rotating images on the training data to increase the size of it. 
+There are different options here:
+* Images that can flip horizontally like "Bumpy Road" or "General Caution"
+* Images that can flip vertically like "Speed Limit (30km/h)" or "No entry"
+* Images that can flip horizontally and vertically like "Priority road" or "No vehicles"
+* Images that can rotate 180 degrees like "End of all speed and passing..."
+* Images that when flipped horizontally or vertically transform into a new class like "Keep right" or "Keep left"
+
 Here is an example of an original image and an augmented image:
+![alt text][image4]
 
-![alt text][image3]
+And the histogram of our training examples after augmentation
+![alt text][image5]
 
-The difference between the original data set and the augmented data set is the following ... 
+The difference between the original data set and the augmented data set is the following 
+Examples on the training set before: 34799 
+Examples on the training set after: 62457
 
 
 ####3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
