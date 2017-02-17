@@ -185,7 +185,7 @@ Here are five traffic signs that I found on the web:
 
 ![alt text][image6] 
 
-The fifth image might be difficult to classify because is not centered and the classifier does indeed fail classifying it.
+The fifth image might be difficult to classify because is not centered and the classifier does indeed fail if the number of EPOCHS is low.
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -203,7 +203,8 @@ Here are the results of the prediction:
 
 ![alt text][image7] 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This is less of the accuracy of the test set but obviously 5 images are not enough to get conclussions.
+The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%. This is more than accuracy of the test set but obviously 5 images are not enough to get conclussions.
+When running less number of EPOCHS the fifth image is misclassified resulting on an accuracy of 80%.
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
@@ -212,38 +213,27 @@ The code for making predictions on my final model is located in the 19th cell of
 ![alt text][image8] 
 
 Image 1 (Bumpy road)
-Top 5 indexes: [  9.99987245e-01   9.39513302e-06   1.59062506e-06   1.57224054e-06
-   1.25469839e-07]
-Top 5 probabilites: [22 26 29 24 25]
+Top 5 probabilites: [  1.00000000e+00   1.54103184e-13   4.27531466e-23   7.22614437e-25
+   2.02705995e-27]
+Top 5 indexes: [22 38 26 29 24]
 
 Image 2 (Keep right)
-Top 5 indexes: [  1.00000000e+00   1.41431933e-09   5.86575818e-13   8.06061487e-16
-   1.43646931e-19]
-Top 5 probabilites: [38 34 13 36  3]
+Top 5 probabilites: [ 1.  0.  0.  0.  0.]
+Top 5 indexes: [38  0  1  2  3]
 
 Image 3 (Yield)
-Top 5 indexes: [  1.00000000e+00   3.09875450e-23   1.71674529e-26   6.84950063e-29
-   2.02672704e-35]
-Top 5 probabilites: [13 35 15 12 39]
+Top 5 probabilites: [ 1.  0.  0.  0.  0.]
+Top 5 indexes: [13  0  1  2  3]
 
 Image 4 (Priority road)
-Top 5 indexes: [  9.65590358e-01   3.41670662e-02   1.53666784e-04   4.37869276e-05
-   2.09742029e-05]
-Top 5 probabilites: [12 15 13 32  1]
+Top 5 probabilites: [  1.00000000e+00   6.98530760e-16   1.94420941e-16   1.23793261e-17
+   1.91082030e-24]
+Top 5 indexes: [12 13 39 15  1]
 
 Image 5 (Speed limit (30km/h))
-Top 5 indexes: [ 0.94010156  0.0451734   0.0089568   0.00258154  0.00141869]
-Top 5 probabilites: [41 32 42  6 16]
+Top 5 probabilites: [ 0.73438287  0.23592307  0.01351789  0.01249629  0.00168125]
+Top 5 indexes: [ 1 36 38  6 14]
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first four images the model is clearly sure of what image is with probabilities equal to 1 or almost 1.
+The fifth image is not so sure and although it classify the image correctly the probability is only 0.73. As I said before this image with less EPOCHS is normally misclassified.
 
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
-
-
-For the second image ... 
