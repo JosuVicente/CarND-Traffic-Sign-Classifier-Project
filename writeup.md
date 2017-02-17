@@ -217,6 +217,7 @@ The code for making predictions on my final model is located in the 19th cell of
 ![alt text][image8] 
 
 Image 1 (Bumpy road)
+asdf
 Top 5 probabilites: [  1.00000000e+00   1.54103184e-13   4.27531466e-23   7.22614437e-25
    2.02705995e-27]
 Top 5 indexes: [22 38 26 29 24]
