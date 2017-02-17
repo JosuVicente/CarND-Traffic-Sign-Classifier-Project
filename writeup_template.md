@@ -21,7 +21,7 @@ The goals / steps of this project are the following:
 [image2]: ./write_up/classes.png "Traffic Sign Classes"
 [image3]: ./write_up/stoppp.png "Traffic Sign Preprocessed"
 [image4]: ./write_up/augment.png "Traffic Sign augmented"
-[image5]: ./write_up/hist2.png "Histogram After Augmentation"
+[image5]: ./write_up/histaug.png "Histogram After Augmentation"
 [image6]: ./write_up/placeholder.png "Traffic Sign 3"
 [image7]: ./write_up/placeholder.png "Traffic Sign 4"
 [image8]: ./write_up/placeholder.png "Traffic Sign 5"
@@ -69,11 +69,11 @@ And then I display a sample image for each of the classes
 
 The code for this step is contained in the sixth code cell of the IPython notebook.
 
-After applying this the training set size grows from 34799 examples to 62457
+For preprocessing the images I do two things:
+Firstly I transform all images from 3 color channels to 1 averaged.The average is weighted based on the preceived brightness. This will also help the classifier as is less computationally expensive.
+Secondly I normalize the data to values between -1 and 1 with mean 0 to reduce the variance and make things easier for the classifier.
 
-Next I normalize the data and transform all images to grayscale so we then have 1 color dimension instead of 3
-
-Here is an example of an original image and an the same image after preprocessing:
+Here is an example of an original image and the same image after preprocessing:
 
 ![alt text][image3]
 
@@ -84,13 +84,15 @@ Finally I shuffle the training set
 For this project we were provided with training, validation and testing data.
 The code for loading this data into our variables is in first code cell of the IPython notebook.  
 
-Number of training examples = 34799 (62457 after preprocessing step)
+Number of training examples = 34799 
 Number of validation examples = 4410
 Number of testing examples = 12630
 
-The sixth code cell of the IPython notebook contains the code for augmenting the data set. I decided to generate additional data because ... To add more data to the the data set, I used the following techniques because ... 
+After taking a look to the histogram of training set I can see that some classes are clearly missrepresented. 
+Also by taking a look at the type of signs I noticed that some of them can be flipped or rotated and still be a valid class so I decided to increase the training set by applying some flipping and rotation.
 
-First I augment the training data by flipping and rotating images on the training data to increase the size of it. 
+The seventh code cell of the IPython notebook contains the code for augmenting the data set. 
+
 There are different options here:
 * Images that can flip horizontally like "Bumpy Road" or "General Caution"
 * Images that can flip vertically like "Speed Limit (30km/h)" or "No entry"
@@ -104,29 +106,38 @@ Here is an example of an original image and an augmented image:
 And the histogram of our training examples after augmentation
 ![alt text][image5]
 
-The difference between the original data set and the augmented data set is the following 
+The difference between the original data set size and the augmented data set is the following 
 Examples on the training set before: 34799 
 Examples on the training set after: 62457
+
+Some clasess keep misrepresented but I found that the accuracy increased when applying this technique.
 
 
 ####3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
-The code for my final model is located in the seventh cell of the ipython notebook. 
+The code for my final model is located in the ninth cell of the ipython notebook. 
 
 My final model consisted of the following layers:
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Preprocess         		| 32x32x1 RGB image   							| 
+| Convolutional Layer 1     	| 1x1 stride, valid padding, outputs 28x28x6 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
- 
+| Max pooling	      	| 2x2 stride, valid padding, outputs 14x14x6 				|
+| Convolutional Layer 2     	| 1x1 stride, valid padding, outputs 10x10x16 	|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride, valid padding, outputs 5x5x16 				|
+| Flatten         		| outputs 400   							| 
+| Fully Connected Layer 1     	| outputs 120 	|
+| RELU					|												|
+| Dropout     	| 0.5 	|
+| Fully Connected Layer 2     	| outputs 84 	|
+| RELU					|												|
+| Dropout     	| 0.5 	|
+| Output Layer     	| outputs 43 	|
+
 
 
 ####4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
