@@ -87,9 +87,9 @@ Finally I shuffle the training set
 For this project we were provided with training, validation and testing data.
 The code for loading this data into our variables is in first code cell of the IPython notebook.  
 
-Number of training examples = 34799
-Number of validation examples = 4410
-Number of testing examples = 12630
+* Number of training examples = 34799
+* Number of validation examples = 4410
+* Number of testing examples = 12630
 
 After taking a look to the histogram of training set I can see that some classes are clearly missrepresented. 
 Also by taking a look at the type of signs I noticed that some of them can be flipped or rotated and still be a valid class so I decided to increase the training set by applying some flipping and rotation.
