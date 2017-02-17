@@ -71,7 +71,9 @@ And then I display a sample image for each of the classes
 The code for this step is contained in the sixth code cell of the IPython notebook.
 
 For preprocessing the images I do two things:
-Firstly I transform all images from 3 color channels to 1 averaged.The average is weighted based on the preceived brightness. This will also help the classifier as is less computationally expensive.
+
+Firstly I transform all images from 3 color channels to 1 averaged. The average is weighted based on the preceived brightness. This will also help the classifier as is less computationally expensive.
+
 Secondly I normalize the data to values between -1 and 1 with mean 0 to reduce the variance and make things easier for the classifier.
 
 Here is an example of an original image and the same image after preprocessing:
