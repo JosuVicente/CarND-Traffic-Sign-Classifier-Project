@@ -148,11 +148,9 @@ My final model consisted of the following layers:
 The code for training the model is located in the thirteenth cell of the ipython notebook. 
 
 To train the model, I used an Adam Optimizer and the following parameters:
-Learning Rate: 0.001
-
-Batch Size: 128
-
-Epochs: 250
+* Learning Rate: 0.001
+* Batch Size: 128
+* Epochs: 250
 
 ####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
@@ -217,10 +215,12 @@ The code for making predictions on my final model is located in the 19th cell of
 ![alt text][image8] 
 
 Image 1 (Bumpy road)
-asdf
+
 Top 5 probabilites: [  1.00000000e+00   1.54103184e-13   4.27531466e-23   7.22614437e-25
    2.02705995e-27]
+   
 Top 5 indexes: [22 38 26 29 24]
+
 
 Image 2 (Keep right)
 
@@ -228,11 +228,13 @@ Top 5 probabilites: [ 1.  0.  0.  0.  0.]
 
 Top 5 indexes: [38  0  1  2  3]
 
+
 Image 3 (Yield)
 
 Top 5 probabilites: [ 1.  0.  0.  0.  0.]
 
 Top 5 indexes: [13  0  1  2  3]
+
 
 Image 4 (Priority road)
 
@@ -241,11 +243,13 @@ Top 5 probabilites: [  1.00000000e+00   6.98530760e-16   1.94420941e-16   1.2379
    
 Top 5 indexes: [12 13 39 15  1]
 
+
 Image 5 (Speed limit (30km/h))
 
 Top 5 probabilites: [ 0.73438287  0.23592307  0.01351789  0.01249629  0.00168125]
 
 Top 5 indexes: [ 1 36 38  6 14]
+
 
 For the first four images the model is clearly sure of what image is with probabilities equal to 1 or almost 1.
 The fifth image is not so sure and although it classify the image correctly the probability is only 0.73. As I said before this image with less EPOCHS is normally misclassified.
