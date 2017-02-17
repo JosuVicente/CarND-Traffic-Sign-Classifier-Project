@@ -22,9 +22,9 @@ The goals / steps of this project are the following:
 [image3]: ./write_up/stoppp.png "Traffic Sign Preprocessed"
 [image4]: ./write_up/augment.png "Traffic Sign augmented"
 [image5]: ./write_up/histaug.png "Histogram After Augmentation"
-[image6]: ./write_up/placeholder.png "Traffic Sign 3"
-[image7]: ./write_up/placeholder.png "Traffic Sign 4"
-[image8]: ./write_up/placeholder.png "Traffic Sign 5"
+[image6]: ./write_up/new.png "New Images"
+[image7]: ./write_up/placeholder.png "New Images Classified"
+[image8]: ./write_up/placeholder.png "New Images with Softmax Probabilities"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -142,13 +142,16 @@ My final model consisted of the following layers:
 
 ####4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-The code for training the model is located in the eigth cell of the ipython notebook. 
+The code for training the model is located in the thirteenth cell of the ipython notebook. 
 
-To train the model, I used an ....
+To train the model, I used an Adam Optimizer and the following parameters:
+Learning Rate: 0.001
+Batch Size: 128
+Epochs: 100
 
 ####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
-The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.
+The code for calculating the accuracy of the model is located in the fourteenth cell of the Ipython notebook.
 
 My final model results were:
 * training set accuracy of ?
@@ -172,33 +175,59 @@ If a well known architecture was chosen:
 
 ####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-Here are five German traffic signs that I found on the web:
+Here are five traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][image6] 
 
-The first image might be difficult to classify because ...
+The fifth image might be difficult to classify because is not centered and the classifier does indeed fail classifying it.
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
-The code for making predictions on my final model is located in the tenth cell of the Ipython notebook.
+The code for making predictions on my final model is located in the seventeenth cell of the Ipython notebook.
 
 Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
+| Bumpy Road      		| Bumpy Road   									| 
+| Keep Right     			| Keep Right 										|
 | Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Priority Road	      		| Priority Road					 				|
+| Speed Limit (30km/h)			| End of no Passing      							|
 
+![alt text][image7] 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This is less of the accuracy of the test set but obviously 5 images are not enough to get conclussions.
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+The code for making predictions on my final model is located in the 19th cell of the Ipython notebook.
+
+![alt text][image8] 
+
+Image 1 (Bumpy road)
+Top 5 indexes: [  9.99987245e-01   9.39513302e-06   1.59062506e-06   1.57224054e-06
+   1.25469839e-07]
+Top 5 probabilites: [22 26 29 24 25]
+
+Image 2 (Keep right)
+Top 5 indexes: [  1.00000000e+00   1.41431933e-09   5.86575818e-13   8.06061487e-16
+   1.43646931e-19]
+Top 5 probabilites: [38 34 13 36  3]
+
+Image 3 (Yield)
+Top 5 indexes: [  1.00000000e+00   3.09875450e-23   1.71674529e-26   6.84950063e-29
+   2.02672704e-35]
+Top 5 probabilites: [13 35 15 12 39]
+
+Image 4 (Priority road)
+Top 5 indexes: [  9.65590358e-01   3.41670662e-02   1.53666784e-04   4.37869276e-05
+   2.09742029e-05]
+Top 5 probabilites: [12 15 13 32  1]
+
+Image 5 (Speed limit (30km/h))
+Top 5 indexes: [ 0.94010156  0.0451734   0.0089568   0.00258154  0.00141869]
+Top 5 probabilites: [41 32 42  6 16]
 
 For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
 
