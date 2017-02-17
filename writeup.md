@@ -19,12 +19,13 @@ The goals / steps of this project are the following:
 
 [image1]: ./write_up/hist.png "Histogram"
 [image2]: ./write_up/classes.png "Traffic Sign Classes"
-[image3]: ./write_up/stoppp.png "Traffic Sign Preprocessed"
+[image3]: ./write_up/preprocess.png "Traffic Signs Preprocessed"
 [image4]: ./write_up/augment.png "Traffic Sign augmented"
 [image5]: ./write_up/histaug.png "Histogram After Augmentation"
 [image6]: ./write_up/new.png "New Images"
-[image7]: ./write_up/placeholder.png "New Images Classified"
-[image8]: ./write_up/placeholder.png "New Images with Softmax Probabilities"
+[image7]: ./write_up/newclassified.png "New Images Classified"
+[image8]: ./write_up/newsoftmax.png "New Images with Softmax Probabilities"
+[image9]: ./write_up/accuracy.png "Accuracy"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -34,7 +35,7 @@ The goals / steps of this project are the following:
 
 ####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
 
-This is it. 
+This is it. Code [available here](https://github.com/JosuVicente/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
 ###Data Set Summary & Exploration
 
@@ -147,19 +148,22 @@ The code for training the model is located in the thirteenth cell of the ipython
 To train the model, I used an Adam Optimizer and the following parameters:
 Learning Rate: 0.001
 Batch Size: 128
-Epochs: 100
+Epochs: 250
 
 ####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 The code for calculating the accuracy of the model is located in the fourteenth cell of the Ipython notebook.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of 0.947
+* validation set accuracy of 0.969
+* test set accuracy of 0.999
 
-The accuracy of the training set i clearly higher than the validation and test sets because the model was trained using this data so it should do well.
+The accuracy of the training set is higher than the validation and test sets because the model was trained using this data so it should do well.
 The accuracy of the validation set is also higher than the accuracy of the test set because the validation set was used to calculate the accuracy when training the model.
+
+See below a chart showing the evolution of the accuracy against the validation set for each EPOCH:
+![alt text][image9] 
 
 The architecture chosen it's based on LeNet-5 implementation and I decided to do that because the problem is similar only with more classes and the input image data had same dimensions (32x32).
 
@@ -170,9 +174,6 @@ The model worked pretty well so I didn't find necessary.
 A description of the layers is shown above.
 
 The final model's accuracy on the training, validation and test show provide evidence of the model working well because all accuracies are high and even though values differ that's expected and they are close together meaning there is no high bias or high variance.
-
-See below a chart showing the evolution of the accuracy against the validation set for each EPOCH:
-![alt text][image9] 
 
  
 
