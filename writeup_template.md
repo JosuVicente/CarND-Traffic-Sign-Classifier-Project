@@ -123,20 +123,20 @@ My final model consisted of the following layers:
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 32x32x3 RGB image   							| 
 | Preprocess         		| 32x32x1 RGB image   							| 
-| Convolutional Layer 1     	| 1x1 stride, valid padding, outputs 28x28x6 	|
+| Layer 1 - Convolutional     	| 5x5 patch, 1x1 stride, valid padding, outputs 28x28x6 	|
 | RELU					|												|
 | Max pooling	      	| 2x2 stride, valid padding, outputs 14x14x6 				|
-| Convolutional Layer 2     	| 1x1 stride, valid padding, outputs 10x10x16 	|
+| Layer 2 - Convolutional     	| 5x5 patch, 1x1 stride, valid padding, outputs 10x10x16 	|
 | RELU					|												|
 | Max pooling	      	| 2x2 stride, valid padding, outputs 5x5x16 				|
 | Flatten         		| outputs 400   							| 
-| Fully Connected Layer 1     	| outputs 120 	|
+| Layer 3 - Fully Connected     	| outputs 120 	|
 | RELU					|												|
 | Dropout     	| 0.5 	|
-| Fully Connected Layer 2     	| outputs 84 	|
+| Layer 4 - Fully Connected     	| outputs 84 	|
 | RELU					|												|
 | Dropout     	| 0.5 	|
-| Output Layer     	| outputs 43 	|
+| Layer 5 - Output Layer     	| outputs 43 	|
 
 
 
@@ -158,17 +158,22 @@ My final model results were:
 * validation set accuracy of ? 
 * test set accuracy of ?
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to over fitting or under fitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+The accuracy of the training set i clearly higher than the validation and test sets because the model was trained using this data so it should do well.
+The accuracy of the validation set is also higher than the accuracy of the test set because the validation set was used to calculate the accuracy when training the model.
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+The architecture chosen it's based on LeNet-5 implementation and I decided to do that because the problem is similar only with more classes and the input image data had same dimensions (32x32).
+
+I decided to add dropouts and found the accuracy of the model to increase. By doing that we prevent overfitting.
+The dropout value I selected was 0.5 and it's done on layers 3 and 4 (the fully connected layers).
+
+The model worked pretty well so I didn't find necessary. 
+A description of the layers is shown above.
+
+The final model's accuracy on the training, validation and test show provide evidence of the model working well because all accuracies are high and even though values differ that's expected and they are close together meaning there is no high bias or high variance.
+
+See below a chart showing the evolution of the accuracy against the validation set for each EPOCH:
+![alt text][image9] 
+
  
 
 ###Test a Model on New Images
