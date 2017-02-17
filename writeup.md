@@ -76,7 +76,7 @@ Firstly I transform all images from 3 color channels to 1 averaged. The average 
 
 Secondly I normalize the data to values between -1 and 1 with mean 0 to reduce the variance and make things easier for the classifier.
 
-Here is an example of an original image and the same image after preprocessing:
+Here are some example of original images and same images after preprocessing:
 
 ![alt text][image3]
 
@@ -88,7 +88,9 @@ For this project we were provided with training, validation and testing data.
 The code for loading this data into our variables is in first code cell of the IPython notebook.  
 
 Number of training examples = 34799 
+
 Number of validation examples = 4410
+
 Number of testing examples = 12630
 
 After taking a look to the histogram of training set I can see that some classes are clearly missrepresented. 
@@ -149,7 +151,9 @@ The code for training the model is located in the thirteenth cell of the ipython
 
 To train the model, I used an Adam Optimizer and the following parameters:
 Learning Rate: 0.001
+
 Batch Size: 128
+
 Epochs: 250
 
 ####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
@@ -172,7 +176,6 @@ The architecture chosen it's based on LeNet-5 implementation and I decided to do
 I decided to add dropouts and found the accuracy of the model to increase. By doing that we prevent overfitting.
 The dropout value I selected was 0.5 and it's done on layers 3 and 4 (the fully connected layers).
 
-The model worked pretty well so I didn't find necessary. 
 A description of the layers is shown above.
 
 The final model's accuracy on the training, validation and test show provide evidence of the model working well because all accuracies are high and even though values differ that's expected and they are close together meaning there is no high bias or high variance.
@@ -188,6 +191,7 @@ Here are five traffic signs that I found on the web:
 ![alt text][image6] 
 
 The fifth image might be difficult to classify because is not centered and the classifier does indeed fail if the number of EPOCHS is low.
+The other images I expected the model to do good and it did.
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -215,25 +219,35 @@ The code for making predictions on my final model is located in the 19th cell of
 ![alt text][image8] 
 
 Image 1 (Bumpy road)
+
 Top 5 probabilites: [  1.00000000e+00   1.54103184e-13   4.27531466e-23   7.22614437e-25
    2.02705995e-27]
+   
 Top 5 indexes: [22 38 26 29 24]
 
 Image 2 (Keep right)
+
 Top 5 probabilites: [ 1.  0.  0.  0.  0.]
+
 Top 5 indexes: [38  0  1  2  3]
 
 Image 3 (Yield)
+
 Top 5 probabilites: [ 1.  0.  0.  0.  0.]
+
 Top 5 indexes: [13  0  1  2  3]
 
 Image 4 (Priority road)
+
 Top 5 probabilites: [  1.00000000e+00   6.98530760e-16   1.94420941e-16   1.23793261e-17
    1.91082030e-24]
+   
 Top 5 indexes: [12 13 39 15  1]
 
 Image 5 (Speed limit (30km/h))
+
 Top 5 probabilites: [ 0.73438287  0.23592307  0.01351789  0.01249629  0.00168125]
+
 Top 5 indexes: [ 1 36 38  6 14]
 
 For the first four images the model is clearly sure of what image is with probabilities equal to 1 or almost 1.
