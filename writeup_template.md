@@ -74,6 +74,7 @@ After applying this the training set size grows from 34799 examples to 62457
 Next I normalize the data and transform all images to grayscale so we then have 1 color dimension instead of 3
 
 Here is an example of an original image and an the same image after preprocessing:
+
 ![alt text][image3]
 
 Finally I shuffle the training set
