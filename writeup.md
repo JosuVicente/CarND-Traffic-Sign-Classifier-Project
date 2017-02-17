@@ -201,7 +201,7 @@ Here are the results of the prediction:
 | Keep Right     			| Keep Right 										|
 | Yield					| Yield											|
 | Priority Road	      		| Priority Road					 				|
-| Speed Limit (30km/h)			| End of no Passing      							|
+| Speed Limit (30km/h)			| Speed Limit (30km/h)      							|
 
 ![alt text][image7] 
 
